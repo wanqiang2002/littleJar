@@ -8,21 +8,18 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * 获取随机词语
+ */
 public class GetRoundWord {
 
     public static void main(String[] args) {
 
         String words = readFileContentByStream(GetRoundWord.class.getResourceAsStream("/word.txt"));
-
         //File file = new File("src/main/resources/word.txt");
         List<String> list =new ArrayList(Arrays.asList(words.split("、")));
         list = getRandomList(list,10);
         System.out.printf(StringUtils.join(list.toArray(),","));
-
-
-
-
-
         //System.out.printf(readFileContentByUrl("src/main/resources/word.txt"));
     }
 
