@@ -46,7 +46,7 @@ public class GetRoundWord {
 
         StringBuffer sbf = new StringBuffer();
         try {
-            reader = new BufferedReader(new InputStreamReader(inputStream));
+            reader = new BufferedReader(new InputStreamReader(inputStream,"UTF-8"));
             String tempStr;
             while ((tempStr = reader.readLine()) != null) {
                 sbf.append(tempStr);
