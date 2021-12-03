@@ -92,8 +92,9 @@ public class ArticleDao  {
     public void addAtricleVo(AtricleVo atricleVo){
         // 获得数据库连接
         Connection conn = DBUtil.getConnection();
+        //保存为草稿
         String sql = "insert into posts(editor_type,create_time,update_time,edit_time,slug,format_content,original_content,title,status)" +
-                " values('0',CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,?,'',?,?,'0')";
+                " values('0',CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,CURRENT_TIMESTAMP,?,'',?,?,'1')";
 
         PreparedStatement ptmt = null;
         try {
