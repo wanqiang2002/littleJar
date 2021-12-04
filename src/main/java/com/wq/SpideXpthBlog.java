@@ -66,11 +66,11 @@ public class SpideXpthBlog implements PageProcessor {
         String url = sc.next();
         System.out.printf(url);
         //String url = "www.cnblogs.com/youcong/p/9404007.html";
-        if(url.indexOf("cnblogs")>=-1){
+        if(url.indexOf("cnblogs")>-1){
             htmlXpth = ProPertiesUtil.getConfig("cnblogs.html");
             titleXpth = ProPertiesUtil.getConfig("cnblogs.title");
             contentXpth = ProPertiesUtil.getConfig("cnblogs.content");
-        }else if(url.indexOf("csdn")>=-1){
+        }else if(url.indexOf("csdn")>-1){
             htmlXpth = ProPertiesUtil.getConfig("csdn.html");
             titleXpth = ProPertiesUtil.getConfig("csdn.title");
             contentXpth = ProPertiesUtil.getConfig("csdn.content");
