@@ -230,7 +230,7 @@ public class YouDaoCloudNoteCheckIn {
      * @author CY
      */
     private static String getJSON(String url) {
-        Connection connection = Jsoup.connect(url).cookie();
+        Connection connection = Jsoup.connect(url);
         connection.header("Cookie", COOKIE);
         connection.header("User-Agent", USER_AGENT);
         try {
