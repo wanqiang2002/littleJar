@@ -9,6 +9,7 @@ import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.pipeline.ConsolePipeline;
 import us.codecraft.webmagic.processor.PageProcessor;
+import us.codecraft.webmagic.selector.Html;
 import us.codecraft.webmagic.selector.Selectable;
 
 import java.sql.SQLException;
@@ -29,16 +30,17 @@ public class SpideXpthBlog implements PageProcessor {
 
     @Override
     public void process(Page page) {
+        Html html = page.getHtml();
+        Selectable title = html.xpath(titleXpth);
+        String content = html.xpath(contentXpth).toString();
+        content=content.replaceAll("%","%%");
 
-        Selectable obj = page.getHtml().xpath(htmlXpth);
-        Selectable title = obj.xpath(titleXpth);
-        Selectable content = obj.xpath(contentXpth);
-
-        System.out.println("title:" + title.replace("<[^>]*>", ""));
+        title = title.replace("<[^>]*>", "");
+        System.out.println("title:" + title);
         //System.out.println("content:" + content);
 
         Remark remark = new Remark();
-        String markdown = remark.convertFragment(content.toString());
+        String markdown = remark.convertFragment(content);
         System.out.printf(markdown);
         System.out.printf("html转换MD成功！！！");
         ArticleDao articleDao = new ArticleDao();
@@ -67,13 +69,23 @@ public class SpideXpthBlog implements PageProcessor {
         System.out.printf(url);
         //String url = "www.cnblogs.com/youcong/p/9404007.html";
         if(url.indexOf("cnblogs")>-1){
-            htmlXpth = ProPertiesUtil.getConfig("cnblogs.html");
+            //htmlXpth = ProPertiesUtil.getConfig("cnblogs.html");
             titleXpth = ProPertiesUtil.getConfig("cnblogs.title");
             contentXpth = ProPertiesUtil.getConfig("cnblogs.content");
         }else if(url.indexOf("csdn")>-1){
-            htmlXpth = ProPertiesUtil.getConfig("csdn.html");
+            //htmlXpth = ProPertiesUtil.getConfig("csdn.html");
             titleXpth = ProPertiesUtil.getConfig("csdn.title");
             contentXpth = ProPertiesUtil.getConfig("csdn.content");
+        }else if(url.indexOf("weixin")>-1){
+            //htmlXpth = ProPertiesUtil.getConfig("weixin.html");
+            titleXpth = ProPertiesUtil.getConfig("weixin.title");
+            contentXpth = ProPertiesUtil.getConfig("weixin.content");
+        }else if(url.indexOf("halo")>-1){
+            titleXpth = ProPertiesUtil.getConfig("halo.title");
+            contentXpth = ProPertiesUtil.getConfig("halo.content");
+        }else if(url.indexOf("aliyun")>-1){
+            titleXpth = ProPertiesUtil.getConfig("aliyun.title");
+            contentXpth = ProPertiesUtil.getConfig("aliyun.content");
         }
             SpideXpthBlog.importSinglePost("https://"+url);
     }
