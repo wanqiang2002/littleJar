@@ -69,15 +69,12 @@ public class SpideXpthBlog implements PageProcessor {
         System.out.printf(url);
         //String url = "www.cnblogs.com/youcong/p/9404007.html";
         if(url.indexOf("cnblogs")>-1){
-            //htmlXpth = ProPertiesUtil.getConfig("cnblogs.html");
             titleXpth = ProPertiesUtil.getConfig("cnblogs.title");
             contentXpth = ProPertiesUtil.getConfig("cnblogs.content");
         }else if(url.indexOf("csdn")>-1){
-            //htmlXpth = ProPertiesUtil.getConfig("csdn.html");
             titleXpth = ProPertiesUtil.getConfig("csdn.title");
             contentXpth = ProPertiesUtil.getConfig("csdn.content");
         }else if(url.indexOf("weixin")>-1){
-            //htmlXpth = ProPertiesUtil.getConfig("weixin.html");
             titleXpth = ProPertiesUtil.getConfig("weixin.title");
             contentXpth = ProPertiesUtil.getConfig("weixin.content");
         }else if(url.indexOf("halo")>-1){
@@ -87,6 +84,12 @@ public class SpideXpthBlog implements PageProcessor {
             titleXpth = ProPertiesUtil.getConfig("aliyun.title");
             contentXpth = ProPertiesUtil.getConfig("aliyun.content");
         }
+        else if(url.indexOf("bilibili")>-1){
+            titleXpth = ProPertiesUtil.getConfig("bilibili.title");
+            contentXpth = ProPertiesUtil.getConfig("bilibili.content");
+        }
+
+
             SpideXpthBlog.importSinglePost("https://"+url);
     }
 }
