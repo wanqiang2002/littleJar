@@ -18,7 +18,6 @@ import java.util.Scanner;
 
 public class SpideXpthBlog implements PageProcessor {
 
-    private static String htmlXpth="";
     private static String titleXpth="";
     private static String contentXpth="";
 

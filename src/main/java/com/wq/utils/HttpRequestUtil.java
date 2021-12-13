@@ -1,5 +1,7 @@
 package com.wq.utils;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -20,7 +22,13 @@ public class HttpRequestUtil {
     public static String sendGet(String url, String param) throws IOException {
 
         BufferedReader in = null;
-        String urlString = url + "?" + param;
+        String urlString = "" ;
+        //String urlString = url + "?" + param;
+        if(StringUtils.isBlank(param)){
+            urlString = url;
+        }else{
+            urlString = url + "?" + param;
+        }
         URLConnection urlConnection = new URL(urlString).openConnection();
         urlConnection.setConnectTimeout(30 * 1000);
         urlConnection.setRequestProperty("accept", "*/*");
