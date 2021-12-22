@@ -23,7 +23,7 @@ public class UpdateBlogByBingApi {
     private static String api="https://cn.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1";
     private static String bing="https://cn.bing.com";
 
-    /*public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException {
         String apiRet = HttpRequestUtil.sendGet(api,null);
 
         JSONObject jsonObject = JSON.parseObject(apiRet);
@@ -41,9 +41,10 @@ public class UpdateBlogByBingApi {
         PhotosDao photosDao = new PhotosDao();
         //添加每日一图至博客
         photosDao.addPhotosVo(photosVo);
+        System.out.printf("更新成功！！");
 
-    }*/
-    public static void main(String[] args) throws IOException {
+    }
+    /*public static void main(String[] args) throws IOException {
         String apiUrl = "https://bing.xinac.net/?page=8";
         String apiRet = HttpRequestUtil.sendGet(apiUrl,null);
 
@@ -63,7 +64,7 @@ public class UpdateBlogByBingApi {
         });
 
 
-    }
+    }*/
 
 
 

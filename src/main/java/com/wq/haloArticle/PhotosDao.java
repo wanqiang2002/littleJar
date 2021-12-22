@@ -30,7 +30,7 @@ public class PhotosDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }finally {
-            //DBUtil.closeConnection(ptmt,conn);
+            DBUtil.closeConnection(ptmt,conn);
         }
     }
 }
